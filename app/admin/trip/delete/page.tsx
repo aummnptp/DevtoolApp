@@ -3,35 +3,38 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 
-interface Room {
+interface TrainTable {
   _id: string;
-  name: string;
-  description: string;
+  tripName: string;
+  startPoint: string;
+  endPoint: string;
+  timeLeave: string;
+  day: string;
 }
 
 const DeletePage = () => {
   useEffect(() => {
-    fetchRooms();
+    fetchTrains();
   }, []);
 
-  async function fetchRooms() {
+  async function fetchTrains() {
     try {
-      const res = await fetch("http://localhost:3000/api/room");
-      const posts: Room[] = await res.json();
-      renderRooms(posts);
+      const res = await fetch("http://localhost:3000/api/traintable");
+      const posts: TrainTable[] = await res.json();
+      renderTable(posts);
     } catch (error) {
-      console.error("Error fetching rooms:", error);
+      console.error("Error fetching trains:", error);
       // Handle error, show a message, etc.
     }
   }
 
-  function renderRooms(rooms: Room[]) {
-    const tableBody = document.getElementById("rooms-table-body");
+  function renderTable(trains: TrainTable[]) {
+    const tableBody = document.getElementById("trains-table-body");
     if (!tableBody) return;
 
     tableBody.innerHTML = "";
 
-    rooms.forEach((room, index) => {
+    trains.forEach((train, index) => {
       const row = document.createElement("tr");
 
       const indexCell = document.createElement("th");
@@ -39,15 +42,19 @@ const DeletePage = () => {
       row.appendChild(indexCell);
 
       const nameCell = document.createElement("td");
-      nameCell.textContent = room.name;
+      nameCell.textContent = train.tripName;
       row.appendChild(nameCell);
+
+      const timeCell = document.createElement("td");
+      timeCell.textContent = train.timeLeave;
+      row.appendChild(timeCell);
 
       const deleteButtonCell = document.createElement("td");
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
       deleteButton.className = "btn btn-error";
       deleteButton.onclick = () => {
-        deleteRoom(room._id);
+        deleteTrain(train._id);
         document.getElementById("delete_modal").showModal();
       };
       deleteButtonCell.appendChild(deleteButton);
@@ -57,17 +64,20 @@ const DeletePage = () => {
     });
   }
 
-  async function deleteRoom(roomId: string) {
+  async function deleteTrain(trainId: string) {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/room/` + roomId, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/traintable/` + trainId,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to delete room");
       }
 
-      fetchRooms();
+      fetchTrains();
     } catch (error) {
       console.error("Error deleting room:", error);
       // Handle error, show a message, etc.
@@ -77,16 +87,16 @@ const DeletePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="overflow-x-auto">
-      {/* <div className="overflow-x-auto overflow-y-auto" style={{ maxHeight: '400px' }}> */}
         <table className="table">
           <thead>
             <tr>
               <th>No.</th>
-              <th>Name</th>
-              <th>Description</th>
+              <th>Trip Name</th>
+              <th>Time Leave</th>
+              <th>Delete</th>
             </tr>
           </thead>
-          <tbody id="rooms-table-body"></tbody>
+          <tbody id="trains-table-body"></tbody>
         </table>
       </div>
       <dialog id="delete_modal" className="modal modal-bottom sm:modal-middle">

@@ -18,7 +18,7 @@ const Console = () => {
   return (
     <section className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-slate-400 px-20 py-12 md:w-100 rounded-2xl shadow-lg" style={{ marginBottom: '5%'}}>
-        <Link href={"/admin/create"} style={{ marginRight: '20px' }}>
+        <Link href={"/admin/trip/create"} style={{ marginRight: '20px' }}>
           <button className="btn h-60 w-60 text-2xl">
             <FaPlus />
             สร้าง
@@ -32,23 +32,10 @@ const Console = () => {
           </button>
         </Link>
 
-        <Link href={"/admin/delete"} style={{ marginRight: '20px' }}>
+        <Link href={"/admin/trip/delete"} style={{ marginRight: '20px' }}>
           <button className="btn h-60 w-60 text-2xl">
             <MdDelete />
             ลบ
-          </button>
-        </Link>
-
-        {/* <button className="btn h-60 w-60 text-2xl" style={{ marginRight: '20px' }}>
-          <AiFillTool />
-          จัดการห้อง
-
-        </button> */}
-
-        <Link href={"/admin/report"}>
-          <button className="btn h-60 w-60 text-2xl">
-            <RiFeedbackFill />
-            ปัญหาที่แจ้ง
           </button>
         </Link>
       </div>

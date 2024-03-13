@@ -22,7 +22,7 @@ const CreatePage = () => {
     // ...
     if (response.ok) {
       // redirect(url:"/")
-      // document.getElementById("create_modal").showModal();
+      document.getElementById("create_modal").showModal();
     } else {
       console.error("Failed to create room");
     }

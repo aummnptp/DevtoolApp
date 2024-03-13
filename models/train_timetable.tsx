@@ -6,14 +6,13 @@ const train_timetableSchema = new Schema(
         startPoint:String,
         endPoint:String,
         timeLeave:String,
+        timeArrive:String,
         day:Date,
         // 
         seatRow:Number,
         ticketCost:Number,
         seatBooking:[]
     
-    },{
-        timestamps:true,
     }
 );
 

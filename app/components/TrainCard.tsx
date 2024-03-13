@@ -29,19 +29,21 @@ const TrainCard = async ({ data }: { data: trainTime }) => {
                 {data.tripName}
                 {/* <div className="badge badge-secondary">NEW</div> */}
               </h2>
-              <div className="grid grid-cols-6 gap-6 text-lg">
-                <div className="col-start-1 flex justify-center items-center">
+              <div className="grid grid-cols-6 text-lg m-5">
+                <div className="col-start-1 text-center align-middle">
               <p>{data.startPoint}</p>
               </div>
-              <div className="col-start-2 text-5xl flex justify-center items-center">
+              <div className="col-start-2 text-3xl flex justify-center items-center">
               {/* <div className="col-start-2 text-5xl"> */}
               <GoArrowRight/>
               </div>
               {/* </div> */}
-              <div className="col-start-3 flex justify-center items-center">
+              <div className="col-start-3 flex text-center">
               <p>{data.endPoint}</p>
               </div>
+              <div className="col-start-4 flex text-center">
               <p>{data.timeLeave}</p>
+              </div>
               {/* <div className="card-actions justify-end">
                 <div className="badge badge-outline">creative</div>
                 <div className="badge badge-outline">knineZ</div>

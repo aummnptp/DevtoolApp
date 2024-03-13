@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import RoomCard from "./components/RoomCard";
+import TrainCard from "./components/TrainCard";
 import HeroTitle from "./components/HeroTitle";
 interface trainTime {
   _id: string;
@@ -24,7 +24,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 gap-4">
           {datas.map((data: any) => (
             <div key={data.__id}>
-              <RoomCard data={data} />
+              <TrainCard data={data} />
             </div>
           ))}
         </div>

@@ -25,7 +25,7 @@ const Console = () => {
           </button>
         </Link>
 
-        <Link href={"/admin/edit"} style={{ marginRight: '20px' }}>
+        <Link href={"/admin/trip/edit"} style={{ marginRight: '20px' }}>
           <button className="btn h-60 w-60 text-2xl">
             <FaEdit />
             แก้ไข

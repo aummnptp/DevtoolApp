@@ -11,11 +11,10 @@ export async function POST(request:Request) {
     const startPoint = formData.get("startPoint");
     const endPoint = formData.get("endPoint");
     const timeLeave = formData.get("timeLeave");
-    const timeArrive = formData.get("timeArrive");
     const day = formData.get("day");
   
     await connectMongoDB();
-    await Train_Timetable.create({tripName,startPoint,endPoint,timeLeave,timeArrive,day});
+    await Train_Timetable.create({tripName,startPoint,endPoint,timeLeave,day});
     
     return NextResponse.json({message:"TrainTable created"},{status:201});
 } 

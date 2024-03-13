@@ -7,6 +7,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { RiMegaphoneLine } from "react-icons/ri";
 import { IoTicketOutline } from "react-icons/io5";<IoTicketOutline />
+import SeatCard from "@/app/components/SeatCard";
+
 interface Booking {
   _id: string;
   roomId: string;
@@ -19,6 +21,16 @@ interface Booking {
 }
 
 const DetailPage: React.FC<{ params: { id: string } }> = ({ params }) => {
+  const initialSeats = [
+    { seatNumber: 'A1', isAvailable: true },
+    { seatNumber: 'A2', isAvailable: false },
+    // เพิ่มที่นั่งต่อไปตามต้องการ
+  ];
+  const [seats, setSeats] = useState(initialSeats);
+
+
+
+
   const { data: session, status } = useSession();
   const CurrentUserId = session?.user.id;
   const [room, setRoom] = useState<any>(null);
@@ -125,14 +137,23 @@ const DetailPage: React.FC<{ params: { id: string } }> = ({ params }) => {
         <div className="border-solid shadow-xl border-2 w-full rounded-md bg-base-100 mx-1 p-6">
           <div className="grid grid-cols-1 gap-4">
             <div className="flex justify-end mb-4">
-              <Link href={`admin/manage/seat/${params.id}`}>
+              <Link href={`../admin/ticket/manage/${params.id}`}>
                 <button className="btn">
                   <IoTicketOutline />
                   จัดการตั๋วที่นั่ง
                 </button>
               </Link>
             </div>
-            <div></div>
+            <div>
+            <div>
+      <h1>Train Seat Booking</h1>
+
+     
+          <SeatCard  />
+     
+    </div>
+
+            </div>
           </div>
         </div>
       </div>

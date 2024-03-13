@@ -45,9 +45,13 @@ const DeletePage = () => {
       nameCell.textContent = train.tripName;
       row.appendChild(nameCell);
 
-      const timeCell = document.createElement("td");
-      timeCell.textContent = train.timeLeave;
-      row.appendChild(timeCell);
+      const startCell = document.createElement("td");
+      startCell.textContent = train.startPoint;
+      row.appendChild(startCell);
+
+      const endCell = document.createElement("td");
+      endCell.textContent = train.endPoint;
+      row.appendChild(endCell);
 
       const deleteButtonCell = document.createElement("td");
       const deleteButton = document.createElement("button");

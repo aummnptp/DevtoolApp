@@ -2,14 +2,17 @@ import mongoose,{Schema} from "mongoose";
 
 const train_timetableSchema = new Schema(
     {
-        travelId: String,
         tripName:String,
         startPoint:String,
         endPoint:String,
         timeLeave:String,
-        day:[],
-    },{
-        timestamps:true,
+        timeArrive:String,
+        day:Date,
+        // 
+        seatRow:Number,
+        ticketCost:Number,
+        seatBooking:[]
+    
     }
 );
 

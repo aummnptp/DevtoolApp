@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -80,6 +79,18 @@ const CreatePage = () => {
           <label>
             เวลาออกรถ
           <input type="time" name="timeLeave"/>
+          </label>
+        </div>
+        <div className="label">
+          <label>
+            ถึงเวลา
+          <input type="time" name="timeArrive"/>
+          </label>
+        </div>
+         <div className="label">
+          <label>
+            วันที่ของทริป
+          <input type="date" name="day"/>
           </label>
         </div>
         {/* <div className="label">

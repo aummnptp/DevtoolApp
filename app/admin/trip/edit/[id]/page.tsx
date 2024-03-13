@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FormEvent } from "react";
 
 const EditRoomPage = async ({ params }: { params: { id: string } }) => {
-  const roomId = params.id;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/room/${roomId}`, {
+  const trainId = params.id;
+  const res = await fetch(`http://localhost:3000/api/traintable/${trainId}`, {
     next: { revalidate: 10 },
   });
   const room = await res.json();
@@ -17,12 +17,12 @@ const EditRoomPage = async ({ params }: { params: { id: string } }) => {
     const name = formData.get("name") as string;
     const description = formData.get("description") as string;
 
-    const apiUrl = "http://localhost:3000/api/room/";
+    const apiUrl = "http://localhost:3000/api/traintable";
     const params = new URLSearchParams();
     params.append("name", name);
     params.append("description", description);
 
-    const response = await fetch(`${apiUrl}${roomId}`, {
+    const response = await fetch(`${apiUrl}${trainId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -78,7 +78,7 @@ const EditRoomPage = async ({ params }: { params: { id: string } }) => {
           >
             Save
           </button>
-          <Link href={"/admin/edit"}>
+          <Link href={"/admin/edit/trip"}>
             <button className="px-10 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-500">
               Back to Edit Page
             </button>

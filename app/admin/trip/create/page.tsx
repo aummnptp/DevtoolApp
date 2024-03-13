@@ -52,7 +52,7 @@ const CreatePage = () => {
           <div className="label">
             <span className="label-text">สถานีเริ่ม</span>
           </div>
-          <select name="startPoint" className="input input-bordered w-24 md:w-auto">
+          <select name="startPoint" className="select select-bordered w-24 md:w-auto">
             {provinces.map((province) => (
               <option value={province.name_th}>{province.name_th}</option>
             ))}
@@ -62,7 +62,7 @@ const CreatePage = () => {
           <div className="label">
             <span className="label-text">สถานีปลายทาง</span>
           </div>
-          <select name="endPoint" className="input input-bordered w-24 md:w-auto">
+          <select name="endPoint" className="select select-bordered w-24 md:w-auto">
             {provinces.map((province) => (
               <option value={province.name_th}>{province.name_th}</option>
             ))}

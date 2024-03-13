@@ -78,7 +78,7 @@ const EditRoomPage = async ({ params }: { params: { id: string } }) => {
           >
             Save
           </button>
-          <Link href={"/admin/edit/trip"}>
+          <Link href={"/admin/trip/edit"}>
             <button className="px-10 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-500">
               Back to Edit Page
             </button>

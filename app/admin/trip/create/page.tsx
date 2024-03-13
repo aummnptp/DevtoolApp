@@ -27,21 +27,15 @@ const CreatePage = () => {
     }
   }
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, []);
-
   return (
     <section className="bg-gray-100 min-h-screen flex items-center justify-center">
       <form
         className="max-w-lg w-full p-8 bg-white shadow-lg rounded-lg"
         onSubmit={createRoom}
-        style={{ marginBottom: "5%" }}
       >
-        <h1 className="text-3xl font-bold text-[#002D74] mb-8">สร้างเที่ยวรถไฟ</h1>
+        <h1 className="text-3xl font-bold text-[#002D74] mb-8">
+          สร้างเที่ยวรถไฟ
+        </h1>
         <label className="form-control">
           <div className="label">
             <span className="label-text">ชื่อขบวน</span>
@@ -54,45 +48,45 @@ const CreatePage = () => {
             required
           />
         </label>
-        <div className="label">
-          <label>
-            สถานีเริ่ม
-          <select name="startPoint">
-            {provinces.map((province)=>(
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">สถานีเริ่ม</span>
+          </div>
+          <select name="startPoint" className="input input-bordered w-24 md:w-auto">
+            {provinces.map((province) => (
               <option value={province.name_th}>{province.name_th}</option>
             ))}
           </select>
-          </label>
-        </div>
-        <div className="label">
-          <label>
-            สถานีปลายทาง
-          <select name="endPoint">
-            {provinces.map((province)=>(
+        </label>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">สถานีปลายทาง</span>
+          </div>
+          <select name="endPoint" className="input input-bordered w-24 md:w-auto">
+            {provinces.map((province) => (
               <option value={province.name_th}>{province.name_th}</option>
             ))}
           </select>
-          </label>
-        </div>
+        </label>
 
-        <div className="label">
-          <label>
-            เวลาออกรถ
-          <input type="time" name="timeLeave"/>
-          </label>
-        </div>
-        <div className="label">
-          <label>
-            ถึงเวลา
-          <input type="time" name="timeArrive"/>
-          </label>
-        </div>
-         <div className="label">
-          <label>
-            วันที่ของทริป
-          <input type="date" name="day"/>
-          </label>
-        </div>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">เวลาออกรถ</span>
+          </div>
+          <input type="time" className="input input-bordered w-24 md:w-auto" name="timeLeave" />
+        </label>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">ถึงเวลา</span>
+          </div>
+          <input type="time" className="input input-bordered w-24 md:w-auto" name="timeArrive" />
+        </label>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">วันที่ของทริป</span>
+          </div>
+          <input type="date" className="input input-bordered w-24 md:w-auto" name="day" />
+        </label>
         {/* <div className="label">
           <label>
             
@@ -103,7 +97,6 @@ const CreatePage = () => {
           </select>
           </label>
         </div> */}
-
 
         <div className="label"></div>
         <div className="flex justify-between items-center">

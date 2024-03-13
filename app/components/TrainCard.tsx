@@ -4,6 +4,7 @@ import RoomAdd from "./RoomAdd";
 import Link from "next/link";
 import roomsdum from "../data/dummydata";
 import { GoArrowRight } from "react-icons/go";
+import { RxDividerVertical } from "react-icons/rx";
 
 interface trainTime {
   _id: string;
@@ -27,7 +28,7 @@ const TrainCard = async ({ data }: { data: trainTime }) => {
                 {/* <div className="badge badge-secondary">NEW</div> */}
               </h2>
               <div className="grid grid-cols-6 text-lg m-5">
-                <div className="col-start-1 text-center align-middle">
+                <div className="col-start-1 m-12 flex text-center">
               <p>{data.startPoint}</p>
               </div>
               <div className="col-start-2 text-3xl flex justify-center items-center">
@@ -35,10 +36,14 @@ const TrainCard = async ({ data }: { data: trainTime }) => {
               <GoArrowRight/>
               </div>
               {/* </div> */}
-              <div className="col-start-3 flex text-center">
+              <div className="col-start-3 m-12  flex text-center">
               <p>{data.endPoint}</p>
               </div>
-              <div className="col-start-4 flex text-center">
+              <div className="col-start-4 text-9xl flex justify-center items-center text-gray-100">
+              <RxDividerVertical/>
+              </div>
+              
+              <div className="col-start-5 m-12 flex text-center">
               <p>{data.timeLeave}</p>
               </div>
               {/* <div className="card-actions justify-end">

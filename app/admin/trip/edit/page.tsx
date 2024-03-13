@@ -45,7 +45,7 @@ const EditPage = async () => {
                       <button
                         className="btn btn-info"
                       >
-                        edit
+                        Edit
                       </button>
                     </Link>
                   </td>

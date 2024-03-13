@@ -4,27 +4,31 @@ import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 import React from "react";
 
-interface Room {
+interface TrainTable {
   _id: string;
-  name: string;
-  description: string;
+  tripName: string;
+  startPoint: string;
+  endPoint: string;
+  timeLeave: string;
+  day: string;
 }
 
 const EditPage = async () => {
-  const res = await fetch("http://localhost:3000/api/room", {
+  const res = await fetch("http://localhost:3000/api/traintable", {
     next: { revalidate: 10 },
   });
-  const posts: Room[] = await res.json();
+  const posts: TrainTable[] = await res.json();
   
   return (
     <div className="flex flex-col items-center">
       <div className="overflow-x-auto">
-      {/* <div className="overflow-x-auto overflow-y-auto" style={{ maxHeight: '400px' }}> */}
         <table className="table">
           <thead>
             <tr>
               <th>No.</th>
-              <th>Name</th>
+              <th>Trip Name</th>
+              <th>Start Point</th>
+              <th>End Point</th>
               <th>Edit</th>
             </tr>
           </thead>
@@ -33,9 +37,11 @@ const EditPage = async () => {
               return (
                 <tr>
                   <th>{i + 1}</th>
-                  <td>{item.name}</td>
+                  <td>{item.tripName}</td>
+                  <td>{item.startPoint}</td>
+                  <td>{item.endPoint}</td>
                   <td>
-                    <Link key={item._id} href={`/admin/edit/${item._id}`}>
+                    <Link key={item._id} href={`/admin/trip/edit/${item._id}`}>
                       <button
                         className="btn btn-info"
                       >

@@ -21,7 +21,7 @@ export default async function Home() {
     <main>
       <div className="flex flex-col items-center">
         <br></br>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           {datas.map((data: any) => (
             <div key={data.__id}>
               <RoomCard data={data} />

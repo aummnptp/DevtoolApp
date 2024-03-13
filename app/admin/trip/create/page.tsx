@@ -5,12 +5,14 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import { FormEvent, useEffect } from "react";
+import provinces from "@/models/dummydata/thai_provinces";
 const CreatePage = () => {
   async function createRoom(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const response = await fetch("http://localhost:3000/api/travelplan", {
+    // สร้าง ตารางรถไฟ
+    const response = await fetch("http://localhost:3000/api/traintable", {
       method: "POST",
       body: formData,
     });
@@ -20,7 +22,7 @@ const CreatePage = () => {
     // ...
     if (response.ok) {
       // redirect(url:"/")
-      document.getElementById("create_modal").showModal();
+      // document.getElementById("create_modal").showModal();
     } else {
       console.error("Failed to create room");
     }
@@ -40,30 +42,58 @@ const CreatePage = () => {
         onSubmit={createRoom}
         style={{ marginBottom: "5%" }}
       >
-        <h1 className="text-3xl font-bold text-[#002D74] mb-8">Create Room</h1>
+        <h1 className="text-3xl font-bold text-[#002D74] mb-8">สร้างเที่ยวรถไฟ</h1>
         <label className="form-control">
           <div className="label">
-            <span className="label-text">Room Name</span>
+            <span className="label-text">ชื่อขบวน</span>
           </div>
           <input
             type="text"
-            name="name"
+            name="tripName"
             id="name"
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             required
           />
         </label>
-        <label className="form-control">
-          <div className="label">
-            <span className="label-text">Description</span>
-          </div>
-          <textarea
-            name="description"
-            id="description"
-            className="mt-1 p-2 border border-gray-300 rounded-md w-full h-32"
-            required
-          ></textarea>
-        </label>
+        <div className="label">
+          <label>
+            สถานีเริ่ม
+          <select name="startPoint">
+            {provinces.map((province)=>(
+              <option value={province.name_th}>{province.name_th}</option>
+            ))}
+          </select>
+          </label>
+        </div>
+        <div className="label">
+          <label>
+            สถานีปลายทาง
+          <select name="endPoint">
+            {provinces.map((province)=>(
+              <option value={province.name_th}>{province.name_th}</option>
+            ))}
+          </select>
+          </label>
+        </div>
+
+        <div className="label">
+          <label>
+            เวลาออกรถ
+          <input type="time" name="timeLeave"/>
+          </label>
+        </div>
+        {/* <div className="label">
+          <label>
+            
+          <select>
+            {provinces.map((province)=>(
+              <option value={province.name_th}>{province.name_th}</option>
+            ))}
+          </select>
+          </label>
+        </div> */}
+
+
         <div className="label"></div>
         <div className="flex justify-between items-center">
           <button

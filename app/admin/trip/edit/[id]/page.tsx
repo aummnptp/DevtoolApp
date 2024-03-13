@@ -31,7 +31,7 @@ const EditRoomPage = async ({ params }: { params: { id: string } }) => {
     });
 
     if (response.ok) {
-      document.getElementById("update_modal").showModal();
+      // document.getElementById("update_modal").showModal();
     } else {
       console.error("Failed to update room");
     }

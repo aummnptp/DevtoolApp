@@ -10,7 +10,7 @@ export async function POST(request:Request) {
     const tripName = formData.get("tripName");
     const startPoint = formData.get("startPoint");
     const endPoint = formData.get("endPoint");
-    const timeLeave = formData.get("tripName");
+    const timeLeave = formData.get("timeLeave");
     const day = formData.get("day");
   
     await connectMongoDB();

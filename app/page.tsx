@@ -12,7 +12,7 @@ interface trainTime {
 }
 
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/room", {
+  const res = await fetch("http://localhost:3000/api/traintable", {
     next: { revalidate: 10 },
   });
   const datas: trainTime[] = await res.json();

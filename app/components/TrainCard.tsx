@@ -14,9 +14,6 @@ interface trainTime {
   day:[];
 }
 
-
- 
-
 const TrainCard = async ({ data }: { data: trainTime }) => {
 
   return (
